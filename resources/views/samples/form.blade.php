@@ -22,12 +22,17 @@
             </x-card>
 
             <x-card title="Alamat">
-                <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
-                    <div class="sm:col-span-2">
-                        <x-input label="Alamat" name="address" placeholder="Jl. Contoh No. 123" />
-                    </div>
-                    <x-input label="Kota" name="city" value="Jakarta" />
-                    <x-select label="Provinsi" name="province" :options="['dki' => 'DKI Jakarta', 'jabar' => 'Jawa Barat', 'jateng' => 'Jawa Tengah', 'jatim' => 'Jawa Timur']" selected="dki" />
+                <div class="grid grid-cols-1 gap-5">
+                    <x-input label="Alamat Jalan" name="address" placeholder="Jl. Contoh No. 123, RT/RW" />
+
+                    <x-region-select
+                        name="region_id"
+                        label="Wilayah"
+                        placeholder='Ketik kelurahan / kota, mis. "menteng jakarta"'
+                        hint="Gabungan kelurahan, kecamatan, kota, dan provinsi."
+                    />
+
+                    <x-input label="Kode Pos" name="zip_code" placeholder="10310" class="sm:max-w-[12rem]" />
                 </div>
             </x-card>
         </div>

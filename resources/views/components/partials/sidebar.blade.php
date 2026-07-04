@@ -26,7 +26,7 @@
                 title="{{ $item['label'] }}"
                 @if ($active) aria-current="page" @endif
                 @if ($collapsible) :class="collapsed ? 'justify-center' : ''" @endif
-                class="flex items-center gap-3 rounded-xl px-3 py-2 text-sm transition {{ $active ? 'bg-brand-50 font-semibold text-brand-700' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' }}"
+                class="flex items-center gap-3 rounded-xl px-3 py-2 text-sm transition {{ $active ? 'bg-gradient-to-r from-brand-500 to-brand-600 font-semibold text-white shadow-sm shadow-brand-600/25' : 'text-slate-600 hover:bg-white/60 hover:text-slate-900' }}"
             >
                 <svg class="h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.7" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="{{ $item['icon'] }}" />

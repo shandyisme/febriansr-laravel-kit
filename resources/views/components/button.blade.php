@@ -17,8 +17,8 @@
     ];
 
     $variants = [
-        'primary' => 'bg-brand-600 text-white shadow-sm hover:bg-brand-500',
-        'secondary' => 'bg-accent-600 text-white shadow-sm hover:bg-accent-500',
+        'primary' => 'bg-gradient-to-b from-brand-500 to-brand-600 text-white shadow-sm shadow-brand-600/25 hover:from-brand-400 hover:to-brand-500',
+        'secondary' => 'bg-gradient-to-b from-accent-500 to-accent-600 text-white shadow-sm shadow-accent-600/25 hover:from-accent-400 hover:to-accent-500',
         'outline' => 'bg-white text-slate-700 ring-1 ring-inset ring-slate-300 hover:bg-slate-50',
         'ghost' => 'text-slate-600 hover:bg-slate-100',
         'danger' => 'bg-red-600 text-white shadow-sm hover:bg-red-500',

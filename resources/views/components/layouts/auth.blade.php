@@ -5,8 +5,11 @@
 <head>
     <x-brand-head :title="$title" />
 </head>
-<body class="grid min-h-full place-items-center bg-slate-50 px-4 py-12 text-slate-800 antialiased">
-    <div class="w-full max-w-md">
+<body class="relative grid min-h-full place-items-center overflow-hidden bg-gradient-to-br from-brand-50 via-white to-accent-50 px-4 py-12 text-slate-800 antialiased">
+    <div class="pointer-events-none absolute -left-32 -top-32 h-96 w-96 rounded-full bg-brand-200/40 blur-3xl"></div>
+    <div class="pointer-events-none absolute -bottom-32 -right-32 h-96 w-96 rounded-full bg-accent-200/40 blur-3xl"></div>
+
+    <div class="relative z-10 w-full max-w-md">
         {{-- Brand --}}
         <div class="mb-6 text-center">
             <a href="{{ url('/') }}" class="inline-flex items-center gap-2">
@@ -19,7 +22,7 @@
         </div>
 
         {{-- Card --}}
-        <div class="rounded-2xl bg-white p-8 shadow-xl ring-1 ring-slate-900/5">
+        <div class="rounded-2xl bg-white/70 p-8 shadow-xl shadow-slate-200/50 ring-1 ring-white/50 backdrop-blur-xl">
             {{ $slot }}
         </div>
 

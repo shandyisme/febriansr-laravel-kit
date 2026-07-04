@@ -5,9 +5,13 @@
 <head>
     <x-brand-head :title="$title" />
 </head>
-<body class="flex min-h-full flex-col bg-slate-50 text-slate-800 antialiased">
+<body class="flex min-h-full flex-col text-slate-800 antialiased">
+    <div class="pointer-events-none fixed inset-0 -z-10 bg-gradient-to-br from-brand-50 via-white to-accent-50"></div>
+    <div class="pointer-events-none fixed -left-40 -top-40 -z-10 h-[32rem] w-[32rem] rounded-full bg-brand-200/30 blur-3xl"></div>
+    <div class="pointer-events-none fixed -right-40 bottom-0 -z-10 h-[32rem] w-[32rem] rounded-full bg-accent-200/30 blur-3xl"></div>
+
     {{-- Top navigation --}}
-    <header class="sticky top-0 z-40 border-b border-slate-200/80 bg-white/80 backdrop-blur">
+    <header class="sticky top-0 z-40 border-b border-white/40 bg-white/60 backdrop-blur-xl">
         <nav class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
             <a href="{{ url('/') }}" class="flex items-center gap-2 text-lg font-bold text-brand-600">
                 @if (brand('logo_path'))
@@ -36,7 +40,7 @@
     </main>
 
     {{-- Footer --}}
-    <footer class="border-t border-slate-200 bg-white">
+    <footer class="border-t border-white/40 bg-white/50 backdrop-blur-xl">
         <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 py-8 text-sm text-slate-500 sm:flex-row sm:px-6 lg:px-8">
             <p>&copy; {{ date('Y') }} {{ brand('app_name') }}. Semua hak dilindungi.</p>
             <div class="flex items-center gap-4">

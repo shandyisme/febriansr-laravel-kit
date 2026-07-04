@@ -24,6 +24,11 @@
 <body class="h-full text-slate-800 antialiased"
     x-data="{ sidebarOpen: false, collapsed: (localStorage.getItem('kitCollapsed') === '1') }"
     x-init="$watch('collapsed', v => localStorage.setItem('kitCollapsed', v ? '1' : '0'))">
+    {{-- Ambient gradient backdrop — makes the glass surfaces above it read as glass. --}}
+    <div class="pointer-events-none fixed inset-0 -z-10 bg-gradient-to-br from-brand-50 via-white to-accent-50"></div>
+    <div class="pointer-events-none fixed -left-32 -top-32 -z-10 h-96 w-96 rounded-full bg-brand-200/30 blur-3xl"></div>
+    <div class="pointer-events-none fixed -bottom-32 -right-32 -z-10 h-96 w-96 rounded-full bg-accent-200/30 blur-3xl"></div>
+
     {{-- Mobile off-canvas sidebar --}}
     <div x-show="sidebarOpen" x-cloak class="relative z-50 lg:hidden" role="dialog" aria-modal="true">
         <div x-show="sidebarOpen" x-transition.opacity class="fixed inset-0 bg-slate-900/60" @click="sidebarOpen = false"></div>
@@ -32,7 +37,7 @@
                 x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0"
                 x-transition:leave="transition ease-in-out duration-300 transform"
                 x-transition:leave-start="translate-x-0" x-transition:leave-end="-translate-x-full"
-                class="relative flex w-72 max-w-[80%] flex-col bg-white pb-4 shadow-xl">
+                class="relative flex w-72 max-w-[80%] flex-col bg-white/85 pb-4 shadow-xl backdrop-blur-xl">
                 <button type="button" class="absolute right-3 top-3 text-slate-400" @click="sidebarOpen = false">
                     <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
                 </button>
@@ -44,14 +49,14 @@
     {{-- Desktop sidebar --}}
     <div class="hidden lg:fixed lg:inset-y-0 lg:z-40 lg:flex lg:flex-col lg:transition-[width] lg:duration-200"
         :class="collapsed ? 'lg:w-20' : 'lg:w-60'">
-        <div class="flex grow flex-col border-r border-slate-200 bg-white">
+        <div class="flex grow flex-col border-r border-white/40 bg-white/60 backdrop-blur-xl">
             <x-partials.sidebar :nav="$nav" :logo="$logo" :collapsible="true" />
         </div>
     </div>
 
     <div class="lg:transition-[padding] lg:duration-200" :class="collapsed ? 'lg:pl-20' : 'lg:pl-60'">
         {{-- Topbar --}}
-        <header class="sticky top-0 z-30 flex h-16 items-center gap-4 border-b border-slate-200 bg-white/80 px-4 backdrop-blur sm:px-6 lg:px-8">
+        <header class="sticky top-0 z-30 flex h-16 items-center gap-4 border-b border-white/40 bg-white/60 px-4 backdrop-blur-xl sm:px-6 lg:px-8">
             <button type="button" class="text-slate-500 lg:hidden" @click="sidebarOpen = true" title="Menu">
                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
             </button>
@@ -84,7 +89,7 @@
         </header>
 
         {{-- Page header: breadcrumb + title + actions --}}
-        <div class="border-b border-slate-200 bg-white px-4 py-5 sm:px-6 lg:px-8">
+        <div class="border-b border-white/40 bg-white/40 px-4 py-5 backdrop-blur-xl sm:px-6 lg:px-8">
             @if (! empty($breadcrumbs))
                 <x-breadcrumbs :items="$breadcrumbs" class="mb-2" />
             @endif

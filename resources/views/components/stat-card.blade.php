@@ -6,7 +6,7 @@
     'trendUp' => true,
 ])
 
-<div {{ $attributes->merge(['class' => 'rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-900/5']) }}>
+<div {{ $attributes->merge(['class' => 'rounded-2xl bg-white/70 p-5 shadow-sm shadow-slate-200/40 ring-1 ring-white/50 backdrop-blur-md']) }}>
     <div class="flex items-start justify-between gap-4">
         <div class="min-w-0">
             <p class="text-xs font-medium text-slate-500">{{ $label }}</p>
@@ -14,7 +14,7 @@
         </div>
 
         @if ($icon)
-            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
+            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-500 to-brand-600 text-white shadow-sm shadow-brand-600/25">
                 {!! $icon !!}
             </div>
         @endif

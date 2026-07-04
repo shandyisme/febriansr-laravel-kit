@@ -3,7 +3,7 @@
     'width' => 'w-48',
 ])
 
-<div class="relative" x-data="{ open: false }">
+<div class="relative" x-data="{ open: false }" @click.outside="open = false" @keydown.escape.window="open = false">
     <div @click="open = ! open">
         {{ $trigger }}
     </div>
@@ -11,7 +11,7 @@
     <div
         x-show="open"
         x-cloak
-        @click.outside="open = false"
+        @click="open = false"
         x-transition:enter="transition ease-out duration-150"
         x-transition:enter-start="opacity-0 scale-95"
         x-transition:enter-end="opacity-100 scale-100"

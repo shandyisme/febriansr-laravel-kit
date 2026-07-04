@@ -42,3 +42,8 @@
     --color-accent-900: #164e63;
     --color-accent-950: #083344;
 }
+
+/* Hide Alpine-controlled elements until Alpine initialises (prevents flash). */
+[x-cloak] {
+    display: none !important;
+}

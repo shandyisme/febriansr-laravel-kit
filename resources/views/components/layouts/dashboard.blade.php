@@ -43,13 +43,13 @@
 
     {{-- Desktop sidebar --}}
     <div class="hidden lg:fixed lg:inset-y-0 lg:z-40 lg:flex lg:flex-col lg:transition-[width] lg:duration-200"
-        :class="collapsed ? 'lg:w-20' : 'lg:w-72'">
+        :class="collapsed ? 'lg:w-20' : 'lg:w-60'">
         <div class="flex grow flex-col border-r border-slate-200 bg-white">
             <x-partials.sidebar :nav="$nav" :logo="$logo" :collapsible="true" />
         </div>
     </div>
 
-    <div class="lg:transition-[padding] lg:duration-200" :class="collapsed ? 'lg:pl-20' : 'lg:pl-72'">
+    <div class="lg:transition-[padding] lg:duration-200" :class="collapsed ? 'lg:pl-20' : 'lg:pl-60'">
         {{-- Topbar --}}
         <header class="sticky top-0 z-30 flex h-16 items-center gap-4 border-b border-slate-200 bg-white/80 px-4 backdrop-blur sm:px-6 lg:px-8">
             <button type="button" class="text-slate-500 lg:hidden" @click="sidebarOpen = true" title="Menu">

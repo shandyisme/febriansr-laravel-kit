@@ -12,4 +12,3 @@
 {{-- App CSS first (theme defaults), then brand overrides so config wins. --}}
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 <x-brand-styles />
-@livewireStyles

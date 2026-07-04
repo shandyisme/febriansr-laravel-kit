@@ -46,6 +46,6 @@
         </div>
     </footer>
 
-    @livewireScripts
+    @livewireScriptConfig
 </body>
 </html>

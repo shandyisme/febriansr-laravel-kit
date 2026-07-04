@@ -21,7 +21,9 @@
 <head>
     <x-brand-head :title="$title" />
 </head>
-<body class="h-full text-slate-800 antialiased" x-data="{ sidebarOpen: false }">
+<body class="h-full text-slate-800 antialiased"
+    x-data="{ sidebarOpen: false, collapsed: (localStorage.getItem('kitCollapsed') === '1') }"
+    x-init="$watch('collapsed', v => localStorage.setItem('kitCollapsed', v ? '1' : '0'))">
     {{-- Mobile off-canvas sidebar --}}
     <div x-show="sidebarOpen" x-cloak class="relative z-50 lg:hidden" role="dialog" aria-modal="true">
         <div x-show="sidebarOpen" x-transition.opacity class="fixed inset-0 bg-slate-900/60" @click="sidebarOpen = false"></div>
@@ -40,17 +42,24 @@
     </div>
 
     {{-- Desktop sidebar --}}
-    <div class="hidden lg:fixed lg:inset-y-0 lg:z-40 lg:flex lg:w-72 lg:flex-col">
+    <div class="hidden lg:fixed lg:inset-y-0 lg:z-40 lg:flex lg:flex-col lg:transition-[width] lg:duration-200"
+        :class="collapsed ? 'lg:w-20' : 'lg:w-72'">
         <div class="flex grow flex-col border-r border-slate-200 bg-white">
-            <x-partials.sidebar :nav="$nav" :logo="$logo" />
+            <x-partials.sidebar :nav="$nav" :logo="$logo" :collapsible="true" />
         </div>
     </div>
 
-    <div class="lg:pl-72">
+    <div class="lg:transition-[padding] lg:duration-200" :class="collapsed ? 'lg:pl-20' : 'lg:pl-72'">
         {{-- Topbar --}}
         <header class="sticky top-0 z-30 flex h-16 items-center gap-4 border-b border-slate-200 bg-white/80 px-4 backdrop-blur sm:px-6 lg:px-8">
-            <button type="button" class="text-slate-500 lg:hidden" @click="sidebarOpen = true">
+            <button type="button" class="text-slate-500 lg:hidden" @click="sidebarOpen = true" title="Menu">
                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
+            </button>
+
+            {{-- Desktop: collapse/expand sidebar --}}
+            <button type="button" class="hidden text-slate-500 hover:text-slate-700 lg:inline-flex" @click="collapsed = !collapsed"
+                :title="collapsed ? 'Lebarkan sidebar' : 'Ciutkan sidebar'">
+                <svg class="h-6 w-6 transition-transform duration-200" :class="collapsed && 'rotate-180'" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M18.75 4.5l-7.5 7.5 7.5 7.5m-6-15l-7.5 7.5 7.5 7.5" /></svg>
             </button>
 
             <div class="flex flex-1 items-center justify-end gap-3">
@@ -100,6 +109,6 @@
         </main>
     </div>
 
-    @livewireScripts
+    @livewireScriptConfig
 </body>
 </html>

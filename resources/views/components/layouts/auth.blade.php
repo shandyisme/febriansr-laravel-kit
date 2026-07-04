@@ -28,6 +28,6 @@
         </p>
     </div>
 
-    @livewireScripts
+    @livewireScriptConfig
 </body>
 </html>

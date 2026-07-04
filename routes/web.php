@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AccessController;
+use App\Http\Controllers\RegionController;
 use App\Http\Controllers\SampleController;
 use App\Http\Controllers\SettingsController;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +25,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/roles', 'roles')->middleware('permission:users.view')->name('roles');
         Route::get('/activity', 'activity')->middleware('permission:activity.view')->name('activity');
     });
+
+    // Region / address autocomplete.
+    Route::get('/regions/search', [RegionController::class, 'search'])->name('regions.search');
+    Route::view('/samples/region', 'samples.region')->name('samples.region');
 });
 
 require __DIR__.'/auth.php';

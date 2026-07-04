@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccessController;
 use App\Http\Controllers\SampleController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,12 @@ Route::middleware('auth')->group(function () {
         Route::get('/table', 'table')->name('table');
         Route::get('/form', 'form')->name('form');
         Route::get('/components', 'components')->name('components');
+    });
+
+    // Access control — RBAC demo pages, gated by permission middleware.
+    Route::controller(AccessController::class)->prefix('access')->name('access.')->group(function () {
+        Route::get('/roles', 'roles')->middleware('permission:users.view')->name('roles');
+        Route::get('/activity', 'activity')->middleware('permission:activity.view')->name('activity');
     });
 });
 

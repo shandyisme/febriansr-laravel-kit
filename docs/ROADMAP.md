@@ -31,10 +31,18 @@ Status pengerjaan boilerplate. Update setiap fase selesai. Titik lanjut kalau se
   Pint + 7 feature test, README + AGENTS.md.
 - **Follow-up** (commit `60b8184`): fix runtime Alpine/Livewire; komponen `x-toggle` & `x-tabs`;
   halaman sample `/samples/{table,form,components}` (SampleController) + menu sidebar.
+- **Fase 2 — RBAC + Activity Log + Settings + Media** (selesai 2026-07-05): tabel & model
+  roles/permissions/pivot + trait `HasRoles` (hasRole/hasPermission/canAccess/assignRole) + middleware
+  `role`/`permission` (alias di bootstrap/app.php) + seeder (admin/manajer/staf, 7 permission, demo=admin).
+  Activity Log (`ActivityLogger` + trait `LogsActivity`). Settings (`setting()`/`setting_set()`).
+  Media System (`media_files` + `MediaService`: upload/replace/delete). Halaman `/access/{roles,activity}`
+  (gated permission) + menu sidebar. RbacTest (403 vs 200). 10 test pass total.
 
 ## Backlog — kerjakan berurutan
 
-### Fase 2 — RBAC + Activity Log + Media (BERIKUTNYA)
+### Fase 3 — Modul WhatsApp (WA AI) — BERIKUTNYA
+
+### Fase 2 — SELESAI ✅ (lihat daftar di atas)
 - [ ] Migration + model: `roles`, `permissions`, `role_user`, `permission_role`.
 - [ ] Trait/helper di User: `hasRole()`, `hasPermission()`, `canAccess()`.
 - [ ] Middleware `role` dan `permission` (daftarkan alias di `bootstrap/app.php`).

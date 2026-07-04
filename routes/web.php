@@ -2,13 +2,15 @@
 
 use App\Http\Controllers\AccessController;
 use App\Http\Controllers\SampleController;
+use App\Http\Controllers\SettingsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn () => view('welcome'))->name('home');
 
 Route::middleware('auth')->group(function () {
     Route::view('/dashboard', 'dashboard')->name('dashboard');
-    Route::view('/settings', 'settings.index')->name('settings');
+    Route::get('/settings', [SettingsController::class, 'index'])->name('settings');
+    Route::put('/settings', [SettingsController::class, 'update'])->name('settings.update');
 
     // Sample / showcase pages (component reference).
     Route::controller(SampleController::class)->prefix('samples')->name('samples.')->group(function () {

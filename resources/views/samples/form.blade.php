@@ -55,10 +55,7 @@
             </x-card>
 
             <x-card title="Foto Profil">
-                <div class="flex items-center gap-4">
-                    <x-avatar name="Budi Santoso" size="lg" />
-                    <x-button variant="outline" size="sm">Unggah Foto</x-button>
-                </div>
+                <x-image-upload name="photo" label="" />
             </x-card>
         </div>
     </form>

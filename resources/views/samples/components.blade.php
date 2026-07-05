@@ -57,6 +57,10 @@
                     </div>
                 </div>
             </x-card>
+
+            <x-card title="Unggah Gambar" class="lg:col-span-2">
+                <x-image-upload name="demo_image" label="" />
+            </x-card>
         </div>
 
         {{-- Umpan balik --}}

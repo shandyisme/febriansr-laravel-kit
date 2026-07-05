@@ -40,11 +40,14 @@ Status pengerjaan boilerplate. Update setiap fase selesai. Titik lanjut kalau se
 
 ## Backlog — kerjakan berurutan
 
-### Fase 5 — Scheduler + Docs lengkap — BERIKUTNYA
-- [ ] Scheduler siap pakai (reminder, report generation, cleanup) di `routes/console.php`.
-- [ ] Docs: `architecture.md`, `development-rules.md`, `deployment-cloudpanel.md`,
-      `new-project-checklist.md`, `module-generator-checklist.md`.
-- [ ] Deploy checklist (queue worker supervisor, scheduler cron, storage link, permission).
+### Fase 5 — Scheduler + Docs lengkap — SELESAI ✅
+- Scheduler: `App\Console\Commands\CleanupCommand` (`kit:cleanup` — prune log/notifikasi lama),
+  dijadwalkan `Schedule::command('kit:cleanup')->dailyAt('02:00')` di `routes/console.php`
+  (+ contoh reminder/report). Cron `schedule:run` terpasang di server (user febriansr-kit).
+- Docs lengkap: `architecture.md`, `development-rules.md`, `deployment-cloudpanel.md`,
+  `new-project-checklist.md`, `module-generator-checklist.md`.
+
+## 🎉 Semua fase (1–5) selesai. Kit siap dipakai sebagai standar project Laravel Febrian.
 
 ### Fase 4 — SELESAI ✅
 - **4a** (commit b66f068): Import/Export (openspout CSV/XLSX + dompdf PDF: SpreadsheetExporter/

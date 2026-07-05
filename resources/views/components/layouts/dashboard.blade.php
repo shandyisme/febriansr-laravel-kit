@@ -120,6 +120,8 @@
         </main>
     </div>
 
+    <x-toast />
+
     @livewireScriptConfig
 </body>
 </html>

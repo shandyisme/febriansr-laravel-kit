@@ -1,6 +1,6 @@
 <x-layouts.dashboard title="Komponen UI" :breadcrumbs="[['label' => 'Contoh'], ['label' => 'Komponen']]">
 
-    <x-tabs :tabs="['dasar' => 'Dasar', 'form' => 'Form', 'umpanbalik' => 'Umpan Balik', 'data' => 'Data']">
+    <x-tabs :tabs="['dasar' => 'Dasar', 'form' => 'Form', 'umpanbalik' => 'Umpan Balik', 'data' => 'Data', 'lanjutan' => 'Lanjutan']">
 
         {{-- Dasar --}}
         <div x-show="active === 'dasar'" class="space-y-6">
@@ -110,6 +110,73 @@
                 <x-empty-state title="Belum ada data" description="Data akan muncul di sini setelah ditambahkan.">
                     <x-button class="mt-4">Tambah Data</x-button>
                 </x-empty-state>
+            </x-card>
+        </div>
+
+        {{-- Lanjutan --}}
+        <div x-show="active === 'lanjutan'" x-cloak class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+            <x-card title="Toast">
+                <div class="flex flex-wrap gap-2">
+                    <x-button onclick="window.toast('Berhasil disimpan!', 'success')">Sukses</x-button>
+                    <x-button variant="danger" onclick="window.toast('Terjadi kesalahan.', 'error')">Error</x-button>
+                    <x-button variant="outline" onclick="window.toast('Sekadar info.', 'info')">Info</x-button>
+                </div>
+            </x-card>
+
+            <x-card title="Multi Select">
+                <x-multi-select name="demo_tags" label="Tag"
+                    :options="['laravel' => 'Laravel', 'livewire' => 'Livewire', 'tailwind' => 'Tailwind', 'alpine' => 'Alpine', 'vite' => 'Vite']"
+                    :selected="['laravel', 'tailwind']" />
+            </x-card>
+
+            <x-card title="Date Picker">
+                <div class="space-y-4">
+                    <x-date-picker name="demo_date" label="Tanggal" />
+                    <x-date-range-picker name="demo_range" label="Rentang Tanggal" />
+                </div>
+            </x-card>
+
+            <x-card title="Chart">
+                <x-chart type="bar" :data="[
+                    'labels' => ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun'],
+                    'datasets' => [[
+                        'label' => 'Penjualan',
+                        'data' => [12, 19, 14, 22, 18, 27],
+                        'backgroundColor' => brand('primary_color'),
+                        'borderRadius' => 6,
+                    ]],
+                ]" />
+            </x-card>
+
+            <x-card title="Timeline">
+                <x-timeline :items="[
+                    ['title' => 'Pesanan dibuat', 'time' => '09:20', 'description' => 'Order #1024 masuk.', 'color' => 'brand'],
+                    ['title' => 'Pembayaran diterima', 'time' => '09:24', 'description' => 'Transfer terverifikasi.', 'color' => 'green'],
+                    ['title' => 'Sedang diproses', 'time' => '10:02', 'color' => 'amber'],
+                ]" />
+            </x-card>
+
+            <x-card title="Loading Skeleton">
+                <x-skeleton :lines="4" avatar />
+            </x-card>
+
+            <x-card title="Drawer &amp; Slide Over" class="lg:col-span-2">
+                <div class="flex flex-wrap gap-2">
+                    <x-button variant="outline" @click="$dispatch('open-drawer', 'demo-drawer')">Buka Drawer</x-button>
+                    <x-button variant="outline" @click="$dispatch('open-slide-over', 'demo-slideover')">Buka Slide Over</x-button>
+                </div>
+
+                <x-drawer name="demo-drawer" title="Contoh Drawer">
+                    <p class="text-sm text-slate-600">Panel geser dari kanan. Tutup dengan Esc, klik area gelap, atau tombol ✕.</p>
+                </x-drawer>
+
+                <x-slide-over name="demo-slideover" title="Contoh Slide Over" subtitle="Cocok untuk form / detail">
+                    <p class="text-sm text-slate-600">Panel lebih lebar dengan header &amp; footer, latar kaca.</p>
+                    <x-slot:footer>
+                        <x-button variant="outline" @click="open = false">Tutup</x-button>
+                        <x-button @click="open = false">Simpan</x-button>
+                    </x-slot:footer>
+                </x-slide-over>
             </x-card>
         </div>
 

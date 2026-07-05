@@ -4,6 +4,7 @@ use App\Http\Controllers\AccessController;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\SampleController;
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\WhatsAppController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn () => view('welcome'))->name('home');
@@ -29,6 +30,12 @@ Route::middleware('auth')->group(function () {
     // Region / address autocomplete.
     Route::get('/regions/search', [RegionController::class, 'search'])->name('regions.search');
     Route::view('/samples/region', 'samples.region')->name('samples.region');
+
+    // WhatsApp module.
+    Route::controller(WhatsAppController::class)->prefix('whatsapp')->name('whatsapp.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::post('/send', 'send')->name('send');
+    });
 });
 
 require __DIR__.'/auth.php';

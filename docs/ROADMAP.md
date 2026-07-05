@@ -40,7 +40,17 @@ Status pengerjaan boilerplate. Update setiap fase selesai. Titik lanjut kalau se
 
 ## Backlog — kerjakan berurutan
 
-### Fase 3 — Modul WhatsApp (WA AI) — BERIKUTNYA
+### Fase 4 — Import/Export + Notifikasi + sisa komponen — BERIKUTNYA
+- [ ] Import CSV/XLSX; Export CSV/XLSX/PDF.
+- [ ] Notification system (database + in-app + WhatsApp channel via `WhatsAppService`).
+- [ ] Sisa komponen: Toast, Drawer, Slide Over, Timeline, Chart Wrapper, Date/DateRange Picker,
+      Multi Select, Loading Skeleton. (Toggle, Tabs, Image Upload, Region Select sudah ada.)
+
+### Fase 3 — Modul WhatsApp — SELESAI ✅
+`config/whatsapp.php`; `whatsapp_message_logs`; `WaAiClient` (mode simulasi jika WA_AI_* kosong);
+`WhatsAppService` (send/sendOtp/sendNotification/sendReminder → antri + log); `SendWhatsAppMessageJob`
+(queue, tries=3, backoff, catat request/response); halaman `/whatsapp` (kirim uji + log). **Queue worker
+supervisor `kit-febriansr-worker`** memproses antrean (di server ini). WhatsAppTest hijau.
 
 ### Fase 2 — SELESAI ✅ (lihat daftar di atas)
 - [ ] Migration + model: `roles`, `permissions`, `role_user`, `permission_role`.

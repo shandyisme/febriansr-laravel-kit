@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AccessController;
+use App\Http\Controllers\ExportController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\SampleController;
 use App\Http\Controllers\SettingsController;
@@ -35,6 +37,19 @@ Route::middleware('auth')->group(function () {
     Route::controller(WhatsAppController::class)->prefix('whatsapp')->name('whatsapp.')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::post('/send', 'send')->name('send');
+    });
+
+    // Import / Export.
+    Route::get('/exports/members/{format}', [ExportController::class, 'members'])->name('exports.members');
+    Route::get('/samples/import', [ExportController::class, 'importForm'])->name('samples.import');
+    Route::post('/samples/import', [ExportController::class, 'importStore'])->name('samples.import.store');
+
+    // Notifications.
+    Route::controller(NotificationController::class)->prefix('notifications')->name('notifications.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::post('/{id}/read', 'read')->name('read');
+        Route::post('/read-all', 'readAll')->name('readAll');
+        Route::post('/send-demo', 'sendDemo')->name('sendDemo');
     });
 });
 

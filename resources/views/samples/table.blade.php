@@ -8,7 +8,14 @@
 
 <x-layouts.dashboard title="Data Anggota" :breadcrumbs="[['label' => 'Contoh'], ['label' => 'Data Table']]">
     <x-slot:actions>
-        <x-button variant="outline" size="md">Ekspor</x-button>
+        <x-dropdown align="right">
+            <x-slot:trigger>
+                <x-button variant="outline" size="md">Ekspor</x-button>
+            </x-slot:trigger>
+            <x-dropdown.item :href="route('exports.members', ['format' => 'csv'])">CSV</x-dropdown.item>
+            <x-dropdown.item :href="route('exports.members', ['format' => 'xlsx'])">Excel</x-dropdown.item>
+            <x-dropdown.item :href="route('exports.members', ['format' => 'pdf'])">PDF</x-dropdown.item>
+        </x-dropdown>
         <x-button :href="route('samples.form')">Tambah Anggota</x-button>
     </x-slot:actions>
 

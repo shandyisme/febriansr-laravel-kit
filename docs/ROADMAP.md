@@ -40,11 +40,20 @@ Status pengerjaan boilerplate. Update setiap fase selesai. Titik lanjut kalau se
 
 ## Backlog — kerjakan berurutan
 
-### Fase 4 — Import/Export + Notifikasi + sisa komponen — BERIKUTNYA
-- [ ] Import CSV/XLSX; Export CSV/XLSX/PDF.
-- [ ] Notification system (database + in-app + WhatsApp channel via `WhatsAppService`).
-- [ ] Sisa komponen: Toast, Drawer, Slide Over, Timeline, Chart Wrapper, Date/DateRange Picker,
-      Multi Select, Loading Skeleton. (Toggle, Tabs, Image Upload, Region Select sudah ada.)
+### Fase 5 — Scheduler + Docs lengkap — BERIKUTNYA
+- [ ] Scheduler siap pakai (reminder, report generation, cleanup) di `routes/console.php`.
+- [ ] Docs: `architecture.md`, `development-rules.md`, `deployment-cloudpanel.md`,
+      `new-project-checklist.md`, `module-generator-checklist.md`.
+- [ ] Deploy checklist (queue worker supervisor, scheduler cron, storage link, permission).
+
+### Fase 4 — SELESAI ✅
+- **4a** (commit b66f068): Import/Export (openspout CSV/XLSX + dompdf PDF: SpreadsheetExporter/
+  PdfExporter/SpreadsheetImporter + ExportController, export dropdown di data table, halaman impor
+  dengan preview). Notification system (database + in-app + WhatsApp channel; DemoNotification,
+  NotificationController, halaman notifikasi, bell di topbar).
+- **4b** (commit d5002aa): komponen Toast (+window.toast), Drawer, Slide Over, Timeline, Multi Select,
+  Loading Skeleton, Chart (Chart.js bundled), Date Picker & Date Range Picker (flatpickr bundled).
+  Didemokan di tab "Lanjutan" halaman Komponen.
 
 ### Fase 3 — Modul WhatsApp — SELESAI ✅
 `config/whatsapp.php`; `whatsapp_message_logs`; `WaAiClient` (mode simulasi jika WA_AI_* kosong);
